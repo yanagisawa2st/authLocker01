@@ -11,10 +11,10 @@ class PracticeScreen extends StatelessWidget{
   @override 
   Widget build(BuildContext context){
 
-   Future<void>SignOut()async{
-    final GoogleSignIn googleSingIn = GoogleSignIn();
-    await googleSingIn.signOut();
-   }
+  //  Future<void>SignOut()async{
+  //   final GoogleSignIn googleSingIn = GoogleSignIn();
+  //   await googleSingIn.signOut();
+  //  }
 
     return Scaffold(
       appBar: AppBar(
@@ -29,7 +29,7 @@ class PracticeScreen extends StatelessWidget{
                   content:Text("本当にサインアウトしてもよろしいでしょうか？"),
                   actions: [
                     TextButton(onPressed:()async{
-                      await SignOut();
+                      // await SignOut();
                       Get.toNamed("/");
                     }, child: Text("OK")),
                     TextButton(onPressed:(){

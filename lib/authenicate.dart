@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'practice_screen.dart';
+import 'camera_test.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:camera/camera.dart';
 
 class AuthScreen extends StatefulWidget{
   const AuthScreen({
@@ -118,7 +120,21 @@ class _AuthScreen extends State<AuthScreen>{
                 getAuth();
               },child:Text("Start Scan",style:TextStyle(fontSize: 13)),style:ElevatedButton.styleFrom(backgroundColor: Colors.purpleAccent,shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),shadowColor: Colors.grey,elevation:8)),
 
-             )
+             ),
+              SizedBox(height: 10,),
+                SizedBox(
+              width:100,
+              height: 24,
+              child:ElevatedButton(onPressed:()async{
+    
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder:(context)=>CameraTest())
+                );
+              },child:Text("Go to Camera",style:TextStyle(fontSize: 13)),style:ElevatedButton.styleFrom(backgroundColor: Colors.purpleAccent,shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),shadowColor: Colors.grey,elevation:8)),
+
+             ),
+        
           ],
         )
       )

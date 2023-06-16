@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'maile_screen.dart';
+import 'phone_screen.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -58,7 +59,9 @@ class Register extends StatelessWidget{
                   ),
                SizedBox(
                     width:350,
-                    child:ElevatedButton.icon(icon:Icon(Icons.call),label: Text("電話番号"),onPressed: (){},style:ElevatedButton.styleFrom(backgroundColor: Colors.green,shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),))
+                    child:ElevatedButton.icon(icon:Icon(Icons.call),label: Text("電話番号"),onPressed: (){
+                       Get.toNamed('/phones');
+                    },style:ElevatedButton.styleFrom(backgroundColor: Colors.green,shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),))
                   ),
                SizedBox(height: 15,),
 

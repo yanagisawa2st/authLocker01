@@ -37,10 +37,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.5
   firebase_core: ^2.13.1
-  firebase_auth: ^4.6.2
+  firebase_auth: ^4.6.3
   google_sign_in: ^6.1.4
   font_awesome_flutter: ^10.4.0
   local_auth: ^2.1.6
+  camera: ^0.10.5+2
+  pinput: ^2.2.31
 
 dev_dependencies:
   flutter_test:
