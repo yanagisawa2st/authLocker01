@@ -22,6 +22,9 @@ class _AuthScreen extends State<AuthScreen>{
   Widget build(BuildContext context){
     bool checkBio;
     bool isGetAuth = false;
+
+    ///7行目で指紋認証のためlocal_authをインポート
+    ///LocalAuthenicationを初期化する
     LocalAuthentication auths = LocalAuthentication();
 
  
@@ -36,6 +39,7 @@ class _AuthScreen extends State<AuthScreen>{
       
 
       try{
+        //指紋認証の権限があるデバイスかどうか判定する
         checkBio = await auths.canCheckBiometrics;
         print(checkBio);
 
@@ -50,6 +54,7 @@ class _AuthScreen extends State<AuthScreen>{
       print("スタート");
      try{
        print("テスト");
+        //指紋認証を実装する。
         isGetAuth = await auths.authenticate(
           localizedReason: "Scan your finger print",
           options: const AuthenticationOptions(
@@ -115,8 +120,10 @@ class _AuthScreen extends State<AuthScreen>{
               width:100,
               height: 24,
               child:ElevatedButton(onPressed:(){
+                //38行目の処理を走らせる。
                 canCheckedBio();
                 Future.delayed(Duration(seconds:1));
+                //53行目の処理を走らせる
                 getAuth();
               },child:Text("Start Scan",style:TextStyle(fontSize: 13)),style:ElevatedButton.styleFrom(backgroundColor: Colors.purpleAccent,shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),shadowColor: Colors.grey,elevation:8)),
 

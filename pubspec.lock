@@ -161,11 +161,51 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.6.0"
+  firebase_messaging:
+    dependency: "direct main"
+    description:
+      name: firebase_messaging
+      sha256: "77d93f897c893fa7c8de433f6950123bd9c56f27fd7f88a032a53102ca23fcee"
+      url: "https://pub.dev"
+    source: hosted
+    version: "14.6.3"
+  firebase_messaging_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_messaging_platform_interface
+      sha256: e9e9dc48a3d8ffa67aaba3d6b1ebf74bc7d7d8c83d10b1458ff97878b9d8a2b0
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.5.3"
+  firebase_messaging_web:
+    dependency: transitive
+    description:
+      name: firebase_messaging_web
+      sha256: "381f217e41e0e407baf8df21787b97e46fabfacefd6a953425be3a6cdf2269f4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.5.3"
+  fixnum:
+    dependency: transitive
+    description:
+      name: fixnum
+      sha256: "25517a4deb0c03aa0f32fd12db525856438902d9c16536311e76cdc57b31d7d1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   flutter:
     dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_blue_plus:
+    dependency: "direct main"
+    description:
+      name: flutter_blue_plus
+      sha256: a977e90b7f9dcece90a95a287f8843e3b9028a61199c41bc279832c096d31d43
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.5.2"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -360,6 +400,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+  nfc_manager:
+    dependency: "direct main"
+    description:
+      name: nfc_manager
+      sha256: cff1e59e316388f4508b4ba0cea4430e4ba39f8a68ecfb3e1256be25c13b0f4a
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.0"
   path:
     dependency: transitive
     description:
@@ -384,6 +432,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  protobuf:
+    dependency: transitive
+    description:
+      name: protobuf
+      sha256: "01dd9bd0fa02548bf2ceee13545d4a0ec6046459d847b6b061d8a27237108a08"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   quiver:
     dependency: transitive
     description:

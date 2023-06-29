@@ -7,7 +7,7 @@ import 'practice_screen.dart';
 
 
 
-
+ //PIN番号(確認コード)の画面のレイアウトは２行目でインプットしたpinputパッケージを使っている。
 
 class PinCodeScreen extends StatefulWidget{
   const PinCodeScreen({Key?key}) : super(key:key);
@@ -22,6 +22,8 @@ class _PinCodeScreen extends State<PinCodeScreen>{
   TextEditingController countryCode = TextEditingController();
   var phone = "";
   int count = 0;
+  // var para_phone = Get.arguments;
+  
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   @override 
@@ -34,7 +36,9 @@ class _PinCodeScreen extends State<PinCodeScreen>{
 
   @override 
   Widget build(BuildContext context){
+      //入力したPIN番号を入れるための変数
       var code = "";
+      //PinThemeで入力のレイアウトの横幅や高さ、ボーダーラインなどのデザインを設定
      final defaultPinTheme = PinTheme(
       width: 45,
       height: 60,
@@ -49,17 +53,22 @@ class _PinCodeScreen extends State<PinCodeScreen>{
         
       ),
     );
-
+    
+    //PIN番号用のコントローラーを設定
     final pincontroler = TextEditingController();
     final formKey = GlobalKey<FormState>();
     
     void CompletePin()async{
       try{
            // Create a PhoneAuthCredential with the code
+           ///以下の二つの引数を入れて信頼性の高い認証を作成
+           ///１、verificationId・・・電話番号の認証が成功したことを示すID。画面遷移前に値渡し用に設定したPhoneScreen.verify
+           ///２、smsCode・・・入力したPIN番号のデータ
         PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: PhoneScreen.verify, smsCode: code);
 
-        // Sign the user in (or link) with the credential
+        //↑で作成した信頼性の高い認証を引数に入れてログイン処理
         await auth.signInWithCredential(credential);
+        // print(para_phone);
 
         Get.toNamed('/practice');
 
@@ -85,64 +94,30 @@ class _PinCodeScreen extends State<PinCodeScreen>{
           Text("Please enter SMS code",style:TextStyle(color:Colors.green,fontSize: 18,fontWeight: FontWeight.w600)),
           SizedBox(height:20,),
           Column(
-            // crossAxisAlignment: CrossAxisAlignment.center,
+           
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
             
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              // for(int i = 0;i < 1;i++)
-            // Form( 
-            //  key:formKey, 
+            
              
              Column(
               children: [
                 Pinput(
-                // androidSmsAutofillMethod: AndroidSmsAutofillMethod.none,
+                
                 forceErrorState: true,
                 errorText: count > 0 && pincontroler.text.length == 0  ? 'PIN番号が間違っています！！' : " ",
                 onChanged:(value){
                     code = value;
                     print("Pin番号の"+ code);
                 },
-                // pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-                // validator: (pin){
-                //   print("Pin番号テスト" + code);
-                //   if(pin == code){
-                    
-                //     showDialog(context: context, builder: (BuildContext context){
-                //      return AlertDialog(
-                //       title: Text("Result"),
-                //       content: Text(pincontroler.text),
-                //       actions: [
-                //         TextButton(onPressed:(){
-                //           Navigator.pop(context);
-                //           Future.delayed(Duration(seconds:1));
-                //         }, child: Text("OK")),
-                //       ],
-                //      );
-                //   });
-
-                //   CompletePin();
-                //   }
-                //   else if(count > 0 && pin != code &&  pincontroler.text.length == 0){
-                //      return 'PIN番号が間違っています';
-                //   }else{
-                //     return "";
-                //   }
-                // },
+             
                 length:6,
                 controller: pincontroler,
                 defaultPinTheme: defaultPinTheme,
-                // onCompleted:(value){
-                //   print(pincontroler.text);
-
-                //   print(value);
-
-
-
-                // }
+               
               ),
 
           SizedBox(height: 10),
@@ -150,34 +125,24 @@ class _PinCodeScreen extends State<PinCodeScreen>{
             width: 150,
             height: 30,
             child:ElevatedButton(onPressed:()async{
-              //  print(pincontroler.text);
-              //  formKey.currentState!.validate();
+              
               CompletePin();
                
                Future.delayed(Duration(seconds: 1));
                pincontroler.clear();
               
-              //  count += 1;
+              
             }, child:Text("Next"),style: ElevatedButton.styleFrom(backgroundColor: Colors.purple,shape:RoundedRectangleBorder(borderRadius:BorderRadius.circular(5))),)
           )
               ],
              ),
-            // ), 
+            
           
        
             ],
             ),
           
-          // SizedBox(height: 10),
-          // SizedBox(
-          //   width: 150,
-          //   height: 30,
-          //   child:ElevatedButton(onPressed:()async{
-          //      print(pincontroler.text);
-          //      Future.delayed(Duration(seconds: 1));
-          //      pincontroler.clear();
-          //   }, child:Text("Next"),style: ElevatedButton.styleFrom(backgroundColor: Colors.purple,shape:RoundedRectangleBorder(borderRadius:BorderRadius.circular(5))),)
-          // )
+      
           ],)
         ],)
       ),

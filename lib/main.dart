@@ -14,8 +14,10 @@ import 'package:camera/camera.dart';
 
 
 Future<void> main() async{
+  //firebaseを使用するための準備として初期化処理をする
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
+    //ファイルにあるfirebase_options.dartのデータをfirebase_options.dartをインポートしてoptionsに設定
     options:DefaultFirebaseOptions.currentPlatform,
   );
 
@@ -24,7 +26,9 @@ Future<void> main() async{
   
 
   // runApp(MyApp());
-  runApp(GetMaterialApp(
+  runApp(
+    //GetXというパッケージでルーティング処理するためのコー
+    GetMaterialApp(
     initialRoute: '/',
     home:LoginScreen(),getPages: [
        GetPage(name: '/', page:()=>LoginScreen()),

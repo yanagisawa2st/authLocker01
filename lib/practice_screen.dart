@@ -8,6 +8,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class PracticeScreen extends StatelessWidget{
   var xcontroller = Get.put(ObsConroller());
+  // var phone = Get.parameters;
   @override 
   Widget build(BuildContext context){
 

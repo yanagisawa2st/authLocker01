@@ -15,6 +15,8 @@ class PhoneScreen extends StatefulWidget{
 
 
 class _PhoneScreen extends State<PhoneScreen>{
+
+  //
   TextEditingController countryCode = TextEditingController();
   var phone = "";
 
@@ -73,7 +75,9 @@ class _PhoneScreen extends State<PhoneScreen>{
             width: 150,
             height: 30,
             child:ElevatedButton(onPressed:()async{
+              //二段階認証の実装
               await FirebaseAuth.instance.verifyPhoneNumber(
+                             //inputFieldで入力した電話番号
                              phoneNumber: '${countryCode.text + phone}',
                              verificationCompleted: (PhoneAuthCredential credential) {
                                    
@@ -93,8 +97,11 @@ class _PhoneScreen extends State<PhoneScreen>{
                                  });
                               }
                              },
+                             //電話番号が実在すればcodeSentが走り、PIN(確認コード)の画面に遷移する。
                              codeSent: (String verificationId, int? resendToken) {
+                                //画面遷移時に電話番号の認証が成功したことを示すverificationIdを値渡しするためにクラス名.verifyとしている
                                 PhoneScreen.verify = verificationId;
+                                //pincode_screen.dartに画面遷移
                                 Get.toNamed('/pin');
                              },
                              codeAutoRetrievalTimeout: (String verificationId) {},

@@ -29,7 +29,7 @@ class Register extends StatelessWidget{
     return Scaffold(
       
       body:Center(
-        child:Column(
+        child:Column(        
           
           children: [
             SizedBox(height: 250,),
