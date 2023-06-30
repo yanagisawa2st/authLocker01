@@ -68,8 +68,8 @@ class _PinCodeScreen extends State<PinCodeScreen>{
 
         //↑で作成した信頼性の高い認証を引数に入れてログイン処理
         await auth.signInWithCredential(credential);
-        // print(para_phone);
-
+        
+        //二段階認証を完了するとpractice_screen.dartに画面遷移する
         Get.toNamed('/practice');
 
         
@@ -129,6 +129,7 @@ class _PinCodeScreen extends State<PinCodeScreen>{
               CompletePin();
                
                Future.delayed(Duration(seconds: 1));
+               //ボタンを押し、ピンコードの処理を終えた後、入力したPINコードを空にする。
                pincontroler.clear();
               
               

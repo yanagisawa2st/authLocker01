@@ -11,18 +11,25 @@ class Register extends StatelessWidget{
   @override 
   Widget build(BuildContext context){
      var isAccount = Get.put(userController());
+     //google-sign-Inの処理を記述
      Future<void> signInWithGoogle()async{
+        //認証処理の初期化
         FirebaseAuth auth = FirebaseAuth.instance;
+        //googleSignInのインスタンスの作成
         final GoogleSignIn googleSignIn = GoogleSignIn();
+        //サインインの処理の開始
         final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
 
+        //認証機能の実装
         final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
 
+        //プロパティにaccessTokenとidTokenを記述
         final AuthCredential credential = GoogleAuthProvider.credential(
           accessToken: googleAuth.accessToken,
           idToken: googleAuth.idToken, 
           );
 
+        //厳重な信用を発行しサインイン実行
         final UserCredential userCredential = await auth.signInWithCredential(credential);
         isAccount.userRecog();
      }
@@ -46,6 +53,7 @@ class Register extends StatelessWidget{
 
                        if(isAccount.isUser.value == true){
                         //  Get.toNamed('/practice');
+                         //authenicate.dartの画面に飛ぶ
                          Get.toNamed('/auth');
 
                        }
@@ -54,12 +62,14 @@ class Register extends StatelessWidget{
                SizedBox(
                     width:350,
                     child:ElevatedButton.icon(icon:Icon(Icons.mail),label: Text("メールアドレス"),onPressed: (){
+                      //maile_screen.dartに画面遷移
                       Get.toNamed('/mailes');
                     },style:ElevatedButton.styleFrom(backgroundColor: Colors.red,shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),))
                   ),
                SizedBox(
                     width:350,
                     child:ElevatedButton.icon(icon:Icon(Icons.call),label: Text("電話番号"),onPressed: (){
+                       //電話番号の２段階認証画面に千一する。
                        Get.toNamed('/phones');
                     },style:ElevatedButton.styleFrom(backgroundColor: Colors.green,shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),))
                   ),

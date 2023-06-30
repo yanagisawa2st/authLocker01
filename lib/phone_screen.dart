@@ -16,12 +16,14 @@ class PhoneScreen extends StatefulWidget{
 
 class _PhoneScreen extends State<PhoneScreen>{
 
-  //
+  //inputFieldに入力した電話番号の頭である国別コードを記憶するための変数
   TextEditingController countryCode = TextEditingController();
+  //inputFieldに入力した電話番号を記憶するための変数
   var phone = "";
 
   @override 
   void initState(){
+    //国別のコード。日本は+81から始まるようになっている
     countryCode.text = "+81";
 
     super.initState();
@@ -65,11 +67,7 @@ class _PhoneScreen extends State<PhoneScreen>{
             ),
             ),
           ),
-          // SizedBox(
-          //   width: 15,
-          //   height: 15,
-          //   child:IconButton(onPressed:(){}, icon:FaIcon(FontAwesomeIcons.phone,color:Colors.blue)),
-          // )
+        
           SizedBox(height: 10),
           SizedBox(
             width: 150,

@@ -57,6 +57,10 @@ class _AuthScreen extends State<AuthScreen>{
         //指紋認証を実装する。
         isGetAuth = await auths.authenticate(
           localizedReason: "Scan your finger print",
+          ///認証システムの細かい内容を設定できる
+          ///biometricOnly・・・基本local_authパッケージではパスコードなどの普通の認証も可能だがtrueにすることで生体認証のみしか受け付けなくなる
+          ///userErrorDialogs・・・認証する際エラーが発生したらダイアログが表示されるようになる。trueだとAndroid/iosで挙動が変わり、falseだとマルチプラットフォームの扱いになり、誤差はなくなる。
+          ///stickyAuth・・・認証中にアプリをバックグラウンドに切り替えた際、falseだと失敗しエラーになる。これを防ぐためtrueにする。
           options: const AuthenticationOptions(
             biometricOnly: true,
             useErrorDialogs: true,
@@ -64,8 +68,10 @@ class _AuthScreen extends State<AuthScreen>{
           )
           );
           print(isGetAuth.toString());
+          //if文で認証が上手く成功したか条件分岐
          if(isGetAuth != false){
            print("スキャン成功");
+           //スキャンに成功した際はpractice_screen.dartに画面が遷移する。
            Get.toNamed('/practice');
          }
      }on PlatformException catch(err){
@@ -94,7 +100,9 @@ class _AuthScreen extends State<AuthScreen>{
                   content:Text("本当にサインアウトしてもよろしいでしょうか？"),
                   actions: [
                     TextButton(onPressed:()async{
+                      //google-sign-inでログインしたのをログアウトする
                       await SignOut();
+                      //login_screen.dartの画面に戻る
                       Get.toNamed("/");
                     }, child: Text("OK")),
                     TextButton(onPressed:(){

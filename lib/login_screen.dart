@@ -35,6 +35,7 @@ class LoginScreen extends StatelessWidget{
                   SizedBox(
                     width:350,
                     child:ElevatedButton(onPressed:(){
+                      //choose_register.dartのスクリーンに飛ぶ
                       Get.toNamed('/select');
                     }, child:Text("新規登録",style:TextStyle(color:Colors.white)),style:ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))))
                   ),

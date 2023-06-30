@@ -27,7 +27,7 @@ Future<void> main() async{
 
   // runApp(MyApp());
   runApp(
-    //GetXというパッケージでルーティング処理するためのコー
+    //GetXというパッケージでルーティング処理するためのコード
     GetMaterialApp(
     initialRoute: '/',
     home:LoginScreen(),getPages: [
