@@ -6,22 +6,6 @@
 	<string>358500086074-qkq8nu22e7j2274siraprgscoeh379ko.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
 	<string>com.googleusercontent.apps.358500086074-qkq8nu22e7j2274siraprgscoeh379ko</string>
-	<!-- Put me in the [my_project]/ios/Runner/Info.plist file -->
-    <!-- Google Sign-in Section -->
-   <key>CFBundleURLTypes</key>
-  <array>
-	<dict>
-		<key>CFBundleTypeRole</key>
-		<string>Editor</string>
-		<key>CFBundleURLSchemes</key>
-		<array>
-			<!-- TODO Replace this value: -->
-			<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
-			<string>com.googleusercontent.apps.358500086074-qkq8nu22e7j2274siraprgscoeh379ko</string>
-		</array>
-	</dict>
-  </array>
-<!-- End of the Google Sign-in Section -->
 	<key>API_KEY</key>
 	<string>AIzaSyBuRIl1sXA6sTJ3EMOul97vHLjE29-YOQM</string>
 	<key>GCM_SENDER_ID</key>

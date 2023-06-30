@@ -13,7 +13,13 @@ class Register extends StatelessWidget{
      var isAccount = Get.put(userController());
      Future<void> signInWithGoogle()async{
         FirebaseAuth auth = FirebaseAuth.instance;
-        final GoogleSignIn googleSignIn = GoogleSignIn();
+        final GoogleSignIn googleSignIn = GoogleSignIn(
+          ///ios用にGoogle-singinのプロパティを二つ追加
+          ///１，hostedDomain(これは値が空文字でOK)
+          ///２，clientId(ios/Runner/GoogleService-Info.plistにあるClientIdをコピペする)
+          hostedDomain: "",
+          clientId: "358500086074-qkq8nu22e7j2274siraprgscoeh379ko.apps.googleusercontent.com"
+        );
         final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
 
         final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
